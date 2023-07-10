@@ -1,3 +1,0 @@
-C:\Users\Wayne\.torch\models
-
-也是pytorch 默认读取模型的位置
