@@ -1,0 +1,127 @@
+from django.shortcuts import render,HttpResponse,redirect
+
+# Create your views here.
+
+
+# for i in USER_DICT.items()
+
+# USER_DICT = {
+#     '1': {'name': 'root1', 'email': 'root@live.com'},
+#     '2': {'name': 'root2', 'email': 'root@live.com'},
+#     '3': {'name': 'root3', 'email': 'root@live.com'},
+#     '4': {'name': 'root4', 'email': 'root@live.com'},
+#     '5': {'name': 'root5', 'email': 'root@live.com'},
+# }
+
+# USER_LIST = [
+#     {'name': 'root'}
+#     {'name': 'root'}
+#     {'name': 'root'}
+# ]
+#
+# {% for item in user_list%}
+#
+# USER_DICT = {
+#     'k1': 'root1',
+#     'k2': 'root2',
+#     'k3': 'root3',
+#     'k4': 'root4',
+# }
+USER_DICT = {
+    '1': {'name': 'root1', 'email': 'root@live.com'},
+    '2': {'name': 'root2', 'email': 'root@live.com'},
+    '3': {'name': 'root3', 'email': 'root@live.com'},
+    '4': {'name': 'root4', 'email': 'root@live.com'},
+    '5': {'name': 'root5', 'email': 'root@live.com'},
+}
+def index(request,nid,uid):
+    # indexx
+    print(request.path_info)
+    # /asdfasdfasdf/13/
+    from django.urls import reverse
+    # v = reverse('indexx',args=(90,88,))
+    v = reverse('indexx',kwargs={"nid":1, 'uid': '99'})
+    print(v)
+
+
+
+    return render(request, 'index.html', {'user_dict': USER_DICT})
+
+
+# def detail(request):
+#     nid = request.GET.get('nid')
+#     detail_info = USER_DICT[nid]
+#     return render(request, 'detail.html', {'detail_info': detail_info})
+
+# http://127.0.0.1:8000/detail-2-9.html
+
+
+def detail(request,nid):
+    detail_info = USER_DICT[nid]
+    return render(request, 'detail.html', {'detail_info': detail_info})
+
+
+"""
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        u = request.POST.get('user')
+        p = request.POST.get('pwd')
+        if u == 'alex' and p == '123':
+            return redirect('/index/')
+        else:
+            return render(request, 'login.html')
+    else:
+        # PUT,DELETE,HEAD,OPTION...
+        return redirect('/index/')
+"""
+
+
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        # radio
+        # v = request.POST.get('gender')
+        # print(v)
+        # v = request.POST.getlist('favor')
+        # print(v)
+        # v = request.POST.get('fafafa')
+        # print(v)
+        obj = request.FILES.get('fafafa')
+        print(obj,type(obj),obj.name)
+        import os
+        file_path = os.path.join('upload', obj.name)
+        f = open(file_path, mode="wb")
+        for i in obj.chunks():
+            f.write(i)
+        f.close()
+
+        from django.core.files.uploadedfile import InMemoryUploadedFile
+        return render(request, 'login.html')
+    else:
+        # PUT,DELETE,HEAD,OPTION...
+        return redirect('/index/')
+
+
+# def home(request):
+#     return HttpResponse('Home')
+from django.views import View
+class Home(View):
+
+    def dispatch(self, request, *args, **kwargs):
+        # 调用父类中的dispatch
+        print('before')
+        result = super(Home,self).dispatch(request, *args, **kwargs)
+        print('after')
+        return result
+
+    def get(self,request):
+        print(request.method)
+        return render(request, 'home.html')
+
+    def post(self,request):
+        print(request.method,'POST')
+        return render(request, 'home.html')
+

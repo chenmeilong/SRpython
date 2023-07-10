@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .menu{
+            display: block;
+            padding: 5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 48px;background-color: black;color: white">
+        张扬凌晨三点玩愤怒的小鸟
+    </div>
+    <div>
+        <div style="position: absolute;top:48px;bottom: 0;left: 0;width: 200px;background-color: brown;">
+            <a class="menu" href="/cmdb/user_info/">用户管理</a>
+            <a class="menu" href="/cmdb/user_group/">用户组管理</a>
+        </div>
+        <div style="position:absolute;top:48px;left: 210px;bottom: 0;right: 0;overflow: auto">
+
+            <h3>添加用户</h3>
+            <form method="POST" action="/cmdb/user_info/">
+                <input type="text" name="user" />
+                <input type="text" name="pwd" />
+
+                <select name="group_id">
+                    {% for item in group_list %}
+                        <option value="{{ item.uid }}">{{ item.caption }}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="submit" value="添加"/>
+            </form>
+
+            <h3>用户列表</h3>
+            <ul>
+                {% for row in user_list %}
+                    <li>
+                        <a href="/cmdb/userdetail-{{ row.id }}/">{{ row.username }}</a> |
+                        <span> {{ row.user_group.caption }} </span>
+                        <a href="/cmdb/userdel-{{ row.id }}/">删除</a> |
+                        <a href="/cmdb/useredit-{{ row.id }}/">编辑</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

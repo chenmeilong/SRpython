@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="/fm/" method="POST">
+        {% csrf_token %}
+        <p>{{ obj.user.label }} {{ obj.user }} {{ obj.errors.user.0 }}</p>
+        <p>{{ obj.pwd }} {{ obj.errors.pwd.0 }}</p>
+        <p>{{ obj.email }}{{ obj.errors.email.0 }}</p>
+        <p>{{ obj.f }}{{ obj.errors.f.0 }}</p>
+        {{ obj.city1 }}
+        {{ obj.city2 }}
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

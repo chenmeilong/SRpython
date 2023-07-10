@@ -1,0 +1,21 @@
+{% load xxoo %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {{ name }}
+{#    小写转换#}
+    {{ name|lower }}
+    {{ name|truncatechars:"3" }}
+{#自定义函数#}
+    {% houyafan  2  5  6 %}
+
+    {{ "maliya"|jiajingze:30 }}
+
+
+
+</body>
+</html>

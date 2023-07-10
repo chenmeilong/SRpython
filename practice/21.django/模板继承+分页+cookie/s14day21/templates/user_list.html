@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .pagination .page{
+            display: inline-block;
+            padding: 5px;
+            background-color: cyan;
+            margin: 5px;
+        }
+        .pagination .page.active{
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for item in li %}
+            {% include 'li.html' %}
+        {% endfor %}
+    </ul>
+
+    <div>
+        <select id="ps" onchange="changePageSize(this)">
+            <option value="10">10</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+
+    <div class="pagination">
+        {{ page_str }}
+    </div>
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script src="/static/jquery.cookie.js"></script>
+    <script>
+       {#页面框架加载完成时 读取cookies修改 网页上显示的值#}
+        $(function(){
+                var v = $.cookie('per_page_count');
+                $('#ps').val(v);
+        });
+        {#读取网页 修改cookie#}
+        function changePageSize(ths){
+            var v = $(ths).val();
+            $.cookie('per_page_count',v.toString());
+            console.log($.cookie());
+            location.reload();
+        }
+    </script>
+</body>
+</html>

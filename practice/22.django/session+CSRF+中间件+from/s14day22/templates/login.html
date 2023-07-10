@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="/login/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="user" />
+        <input type="text" name="pwd" />
+        <input type="checkbox" name="rmb" value="1" /> 10秒免登录
+        <input type="submit" value="提交" />
+        <input id="btn1" type="button" value="按钮" />
+        <input id="btn2" type="button" value="按钮" />
+    </form>
+
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script src="/static/jquery.cookie.js"></script>
+    <script>
+        $(function(){
+            $.ajaxSetup({
+                beforeSend: function(xhr,settings){
+                    xhr.setRequestHeader('X-CSRFtoken', $.cookie('csrftoken'));
+                }
+            });
+
+            $('#btn1').click(function () {
+                $.ajax({
+                    url: '/login/',
+                    type:"GET",
+                    data: {'user': 'root', 'pwd': '123'},
+                    // headers: {'X-CSRFtoken': $.cookie('csrftoken')},
+                    success:function(arg){
+
+                    }
+                })
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>小红砖三维示例-修改背景颜色</title>
+    <link rel="shortcut icon" href="https://www.bos.xyz/favicon.ico" />
+    <link rel="stylesheet" href="https://xhz3d.bos.xyz/v1/Xhz.min.css">
+
+</head>
+<body>
+    <div id="viewport"></div>
+    <div class="xhz-demo-actions">
+        <span id="xhz-btn-run">运行</span>
+        <span id="xhz-btn-reset">复原</span>
+    </div>
+</body>
+
+    <script src="https://xhz3d.bos.xyz/v1/Xhz.min.js"></script>
+
+	<script>
+		Xhz.init(function () {
+			Xhz.exampleKey = "change_background_color";
+			const options = {
+				modelKey: "demo_fornature_simple",
+				devcode: "e10e59bf0ee97213ca7104977877bd1a",
+			};
+			const btnRun = document.querySelector("#xhz-btn-run"),
+				btnReset = document.querySelector("#xhz-btn-reset");
+			let disabled = true; // 按钮是否可用。true-不可用 false-可用
+			const app = new Xhz.App(options);
+			const { model, view } = app;
+
+			model.on('load', function(event) {
+				disabled = false;
+			});
+
+			btnRun.onclick = function() {
+				if (disabled) return;
+
+				view.setSceneBackground("#F3FA8F");
+			}
+			btnReset.onclick = function() {
+				if (disabled) return;
+
+				window.location.reload();
+			}
+
+		});
+
+        function f1(){
+
+            Xhz.exampleKey = "change_background_color";
+			const options = {
+				modelKey: "demo_fornature_simple",
+				devcode: "e10e59bf0ee97213ca7104977877bd1a",
+			};
+			const btnRun = document.querySelector("#xhz-btn-run"),
+				btnReset = document.querySelector("#xhz-btn-reset");
+			let disabled = true; // 按钮是否可用。true-不可用 false-可用
+			const app = new Xhz.App(options);
+			const { model, view } = app;
+            view.setSceneBackground("#F3FA8F");
+            console.log(1);
+        }
+        setInterval("f1();", 2000);
+
+    </script>
+
+
+</html>

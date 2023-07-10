@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/login/" method="POST" enctype="multipart/form-data">
+        <p>
+            <input type="text" name="user" placeholder="用户名" />
+        </p>
+        <p>
+            <input type="password" name="pwd" placeholder="密码" />
+        </p>
+        <p>
+            男：<input type="radio"  name="gender" value="1"/>
+            女：<input type="radio" name="gender" value="2"/>
+            张扬：<input type="radio" name="gender" value="3"/>
+        </p>
+        <p>
+            男：<input type="checkbox"  name="favor" value="11"/>
+            女：<input type="checkbox" name="favor" value="22"/>
+            张扬：<input type="checkbox" name="favor" value="33"/>
+        </p>
+        <p>
+            <select name="city" multiple>
+                <option value="sh">上海</option>
+                <option value="bj">北京</option>
+                <option value="tj">天津</option>
+            </select>
+        </p>
+        <p>
+            <input type="file" name="fafafa"/>
+        </p>
+
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>

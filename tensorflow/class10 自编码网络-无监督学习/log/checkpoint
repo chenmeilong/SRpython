@@ -1,0 +1,2 @@
+model_checkpoint_path: "f:/pythoncode/tensorflow/class10 \350\207\252\347\274\226\347\240\201\347\275\221\347\273\234-\346\227\240\347\233\221\347\235\243\345\255\246\344\271\240/log/stacked_auto_encoder.ckpt-49"
+all_model_checkpoint_paths: "f:/pythoncode/tensorflow/class10 \350\207\252\347\274\226\347\240\201\347\275\221\347\273\234-\346\227\240\347\233\221\347\235\243\345\255\246\344\271\240/log/stacked_auto_encoder.ckpt-49"
